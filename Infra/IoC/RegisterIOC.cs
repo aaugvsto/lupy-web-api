@@ -3,6 +3,7 @@ using Lupy.Domain.Entities;
 using Lupy.Domain.Interfaces.IRepositories.Base;
 using Lupy.Domain.Interfaces.IServices;
 using Lupy.Domain.Services;
+using Lupy.Infra.Authentication;
 using Lupy.Infra.AutoMapper;
 using Lupy.Infra.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -42,7 +43,7 @@ namespace Lupy.Infra.IoC
                     x.SaveToken = true;
                     x.TokenValidationParameters = new TokenValidationParameters
                     {
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["PrivateKey"])),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.PrivateKey)),
                         ValidateIssuer = false,
                         ValidateAudience = false,
                         ValidateLifetime = true,
@@ -55,7 +56,7 @@ namespace Lupy.Infra.IoC
             #region DBContext
 
             services.AddDbContext<DBContext>(db =>
-                db.UseSqlServer(builder.Configuration.GetConnectionString("Connection"))
+                db.UseSqlServer(Environment.GetEnvironmentVariable("CONNECTION_STRING"))
                 );
 
             #endregion

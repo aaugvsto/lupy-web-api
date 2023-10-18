@@ -10,7 +10,9 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONNECTION_STRING": "Server=localhost;Database=LUPY;User Id=admin;Password=admin;Encrypt=False",
+        "PRIVATE_KEY": "qsxS01DlxLMcP2VdXyImdMAzOtkgQyWC"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7217;http://localhost:5021"

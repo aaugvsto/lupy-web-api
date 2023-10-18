@@ -8,10 +8,7 @@ namespace Lupy.Infra.Authentication
         { 
             get 
             { 
-                return new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json")
-                    .Build()["PrivateKey"]!;
+                return Environment.GetEnvironmentVariable("PRIVATE_KEY")!;
             } 
         }
     }

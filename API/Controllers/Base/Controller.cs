@@ -52,10 +52,6 @@ namespace LupyAPI.Controllers.Base
         [Authorize]
         public async Task<IActionResult> Create([FromBody] TEntityDTO entityDto)
         {
-
-            if (!this.ModelState.IsValid)
-                return BadRequest(this.ModelState.ValidationState);
-
             try
             {
                 TEntity newEntity = this.mapper.Map<TEntityDTO, TEntity>(entityDto);
@@ -76,10 +72,6 @@ namespace LupyAPI.Controllers.Base
         [Authorize]
         public async Task<IActionResult> Update([FromBody] TEntityDTO entityDto)
         {
-
-            if (!this.ModelState.IsValid)
-                return BadRequest(this.ModelState.ValidationState);
-
             try
             {
                 TEntity updatedEntity = this.mapper.Map<TEntityDTO, TEntity>(entityDto);

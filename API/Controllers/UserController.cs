@@ -22,13 +22,10 @@ namespace LupyAPI.Controllers
         [Route("Authenticate")]
         public async Task<IActionResult> Authenticate([FromQuery] UserLoginDTO loginDto)
         {
-            if (!this.ModelState.IsValid)
-                return BadRequest(this.ModelState.ValidationState);
-
             try
             {
                 var dbUser = await base.controllerService.Authenticate(loginDto);
-                return dbUser != null ? Ok(new { Token = TokenService.Generate(new AuthUser(dbUser.Email, dbUser.IdRole)), dbUser.Name, dbUser.IdRole, Clinic = dbUser.Clinic.Name }) : NotFound();
+                return dbUser != null ? Ok(new { Token = TokenService.Generate(new AuthUser(dbUser.Email, dbUser.IdRole)), dbUser.Id }) : NotFound();
             }
             catch (Exception ex) 
             {
