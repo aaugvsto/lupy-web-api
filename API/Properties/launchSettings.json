@@ -1,10 +1,5 @@
 {
   "profiles": {
-    "LupyAPI": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger"
-    },
     "Develop": {
       "commandName": "IISExpress",
       "launchBrowser": true,
@@ -22,7 +17,9 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Homolog"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONNECTION_STRING": "Server=localhost;Database=LUPY;User Id=admin;Password=admin;Encrypt=False",
+        "PRIVATE_KEY": "qsxS01DlxLMcP2VdXyImdMAzOtkgQyWC"
       }
     },
     "Production": {
@@ -30,7 +27,9 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONNECTION_STRING": "Server=localhost;Database=LUPY;User Id=admin;Password=admin;Encrypt=False",
+        "PRIVATE_KEY": "qsxS01DlxLMcP2VdXyImdMAzOtkgQyWC"
       }
     },
     "Docker": {
