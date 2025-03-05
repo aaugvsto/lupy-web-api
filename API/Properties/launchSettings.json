@@ -6,8 +6,11 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": "Server=localhost;Database=LUPY;User Id=admin;Password=admin;Encrypt=False",
-        "PRIVATE_KEY": "qsxS01DlxLMcP2VdXyImdMAzOtkgQyWC"
+        "CONNECTION_STRING": "Server=<server>;Database=<db>;User Id=<dbuser>;Password=<dbuser>;Encrypt=False",
+        "PRIVATE_KEY": ""
+      },
+      "ConnectionStrings": {
+        "DefaultConnection": "Server=<server>;Database=<db>;User Id=<dbuser>;Password=<dbuser>;Encrypt=False"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7217;http://localhost:5021"
@@ -18,8 +21,8 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": "Server=localhost;Database=LUPY;User Id=admin;Password=admin;Encrypt=False",
-        "PRIVATE_KEY": "qsxS01DlxLMcP2VdXyImdMAzOtkgQyWC"
+        "CONNECTION_STRING": "Server=<server>;Database=<db>;User Id=<dbuser>;Password=<dbuser>;Encrypt=False",
+        "PRIVATE_KEY": ""
       }
     },
     "Production": {
@@ -28,8 +31,8 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": "Server=localhost;Database=LUPY;User Id=admin;Password=admin;Encrypt=False",
-        "PRIVATE_KEY": "qsxS01DlxLMcP2VdXyImdMAzOtkgQyWC"
+        "CONNECTION_STRING": "Server=<server>;Database=<db>;User Id=<dbuser>;Password=<dbuser>;Encrypt=False",
+        "PRIVATE_KEY": ""
       }
     },
     "Docker": {
