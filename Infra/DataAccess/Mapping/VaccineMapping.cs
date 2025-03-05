@@ -18,7 +18,7 @@ namespace DataAccess.Models
             builder.Property(x => x.Id).HasColumnName("ID_VACCINE");
             builder.Property(x => x.Name).HasColumnName("NAME");
             builder.Property(x => x.Batch).HasColumnName("BATCH");
-            builder.Property(x => x.ExpirationDate).HasColumnName("EXPIRATION_DATE");
+            builder.Property(x => x.ExpirationDate).HasColumnName("EXPIRATION_DATE").IsRequired(false);
             builder.Property(x => x.IdClinic).HasColumnName("ID_CLINIC");
             builder.Property(x => x.CreationUser).HasColumnName("CREATION_USER");
             builder.Property(x => x.CreationDate).HasColumnName("CREATION_DATE");

@@ -56,8 +56,7 @@ namespace Lupy.Infra.IoC
             #region DBContext
 
             services.AddDbContext<DBContext>(db =>
-                db.UseSqlServer(Environment.GetEnvironmentVariable("CONNECTION_STRING"))
-                );
+                db.UseSqlServer(Environment.GetEnvironmentVariable("CONNECTION_STRING")));
 
             #endregion
 

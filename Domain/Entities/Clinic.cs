@@ -1,6 +1,4 @@
-﻿#nullable disable
-
-using Lupy.Domain.Entities.Base;
+﻿using Lupy.Domain.Entities.Base;
 
 namespace Lupy.Domain.Entities
 {
@@ -9,6 +7,8 @@ namespace Lupy.Domain.Entities
         public Clinic()
         {
             VaccinePet = new List<VaccinePet>();
+            Vaccines = new List<Vaccine>();
+            Users = new List<User>();
         }
 
         public string Name { get; set; }

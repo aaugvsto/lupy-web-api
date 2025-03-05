@@ -32,12 +32,14 @@ namespace DataAccess.Models
             builder.HasOne(x => x.Clinic)
                 .WithMany(x => x.VaccinePet)
                 .HasForeignKey(x => x.IdClinic)
-                .HasConstraintName("FK_VACCINE_PET_CLINIC");
+                .HasConstraintName("FK_VACCINE_PET_CLINIC")
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(x => x.Vaccine)
                 .WithMany(x => x.VaccinePet)
                 .HasForeignKey(x => x.IdVaccine)
-                .HasConstraintName("FK_VACCINEPET_VACCINE");
+                .HasConstraintName("FK_VACCINEPET_VACCINE")
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
