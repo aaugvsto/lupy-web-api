@@ -24,7 +24,12 @@ namespace LupyAPI.Controllers.Base
         {
             try
             {
-                return Ok(await this.controllerService.GetAsync());
+                var entityList = await this.controllerService.GetAsync();
+
+                if (entityList is null || !entityList.Any())
+                    return NotFound();
+
+                return Ok(this.mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityDTO>>(entityList));
             }
             catch (Exception ex)
             {
@@ -39,8 +44,8 @@ namespace LupyAPI.Controllers.Base
         {
             try
             {
-                var user = await this.controllerService.FindAsync(entityId);
-                return user == null ? NotFound() : Ok(user);
+                var entity = await this.controllerService.FindAsync(entityId);
+                return entity == null ? NotFound() : Ok(this.mapper.Map<TEntity, TEntityDTO>(entity));
             }
             catch (Exception ex)
             {
