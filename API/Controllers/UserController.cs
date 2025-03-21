@@ -18,9 +18,9 @@ namespace LupyAPI.Controllers
         {
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Authenticate")]
-        public async Task<IActionResult> Authenticate([FromQuery] UserLoginDTO loginDto)
+        public async Task<IActionResult> Authenticate([FromBody] UserLoginDTO loginDto)
         {
             try
             {
