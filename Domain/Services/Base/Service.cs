@@ -13,14 +13,14 @@ namespace Lupy.Domain.Services.Base
 
         public Service(IRepository<T> repository) => this._repository = repository;
 
-        public async Task<T> CreateAsync(T entity) => await this._repository.CreateAsync(entity);
+        public virtual async Task<T> CreateAsync(T entity) => await this._repository.CreateAsync(entity);
 
-        public async Task<bool> DeleteAsync(int id) => await this._repository.DeleteAsync(id);
+        public virtual async Task<bool> DeleteAsync(int id) => await this._repository.DeleteAsync(id);
 
-        public async Task<T?> FindAsync(int id) => await this._repository.FindAsync(id);
+        public virtual async Task<T?> FindAsync(int id) => await this._repository.FindAsync(id);
 
-        public async Task<IEnumerable<T>> GetAsync() => await this._repository.GetAsync();
+        public virtual async Task<IEnumerable<T>> GetAsync() => await this._repository.GetAsync();
 
-        public async Task<bool> UpdateAsync(T entity) => await this._repository.UpdateAsync(entity);
+        public virtual async Task<bool> UpdateAsync(T entity) => await this._repository.UpdateAsync(entity);
     }
 }
