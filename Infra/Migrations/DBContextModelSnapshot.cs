@@ -3,8 +3,8 @@ using System;
 using Infra.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -17,42 +17,42 @@ namespace Lupy.Infra.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.9")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("ProductVersion", "9.0.3")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Lupy.Domain.Entities.Clinic", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_CLINIC");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CREATION_DATE");
 
                     b.Property<string>("CreationUser")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("CREATION_USER");
 
                     b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("MODIFICATION_DATE");
 
                     b.Property<string>("ModificationUser")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("MODIFICATION_USER");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(25)
                         .IsUnicode(false)
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("character varying(25)")
                         .HasColumnName("NAME");
 
                     b.HasKey("Id")
@@ -65,38 +65,38 @@ namespace Lupy.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_PET");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Age")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("AGE");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CREATION_DATE");
 
                     b.Property<string>("CreationUser")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("CREATION_USER");
 
                     b.Property<int>("IdUser")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_TUTOR");
 
                     b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("MODIFICATION_DATE");
 
                     b.Property<string>("ModificationUser")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("MODIFICATION_USER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("NAME");
 
                     b.HasKey("Id")
@@ -111,30 +111,30 @@ namespace Lupy.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CREATION_DATE");
 
                     b.Property<string>("CreationUser")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("CREATION_USER");
 
                     b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("MODIFICATION_DATE");
 
                     b.Property<string>("ModificationUser")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("MODIFICATION_USER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("NAME");
 
                     b.HasKey("Id");
@@ -146,50 +146,50 @@ namespace Lupy.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_USER");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Cellphone")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("CELLPHONE");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CREATION_DATE");
 
                     b.Property<string>("CreationUser")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("CREATION_USER");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("EMAIL");
 
                     b.Property<int>("IdClinic")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("CLINIC_ID");
 
                     b.Property<int>("IdRole")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_ROLE");
 
                     b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("MODIFICATION_DATE");
 
                     b.Property<string>("ModificationUser")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("MODIFICATION_USER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("NAME");
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("PASSWORD");
 
                     b.HasKey("Id")
@@ -206,42 +206,42 @@ namespace Lupy.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_VACCINE");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Batch")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("BATCH");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CREATION_DATE");
 
                     b.Property<string>("CreationUser")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("CREATION_USER");
 
                     b.Property<DateTime?>("ExpirationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("EXPIRATION_DATE");
 
                     b.Property<int>("IdClinic")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_CLINIC");
 
                     b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("MODIFICATION_DATE");
 
                     b.Property<string>("ModificationUser")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("MODIFICATION_USER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("NAME");
 
                     b.HasKey("Id")
@@ -256,38 +256,38 @@ namespace Lupy.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_VACCINE_PET");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("CREATION_DATE");
 
                     b.Property<string>("CreationUser")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("CREATION_USER");
 
                     b.Property<int>("IdClinic")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_CLINIC");
 
                     b.Property<int>("IdPet")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_PET");
 
                     b.Property<int>("IdVaccine")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("ID_VACCINE");
 
                     b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("MODIFICATION_DATE");
 
                     b.Property<string>("ModificationUser")
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("text")
                         .HasColumnName("MODIFICATION_USER");
 
                     b.HasKey("Id")

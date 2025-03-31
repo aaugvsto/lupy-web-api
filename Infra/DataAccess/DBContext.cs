@@ -24,24 +24,11 @@ namespace Infra.DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("CONNECTION_STRING"));
+                optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("CONNECTION_STRING"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
-
-            foreach (var entity in modelBuilder.Model.GetEntityTypes())
-            {
-                foreach (var property in entity.GetProperties())
-                {
-                    if (property.ClrType == typeof(string) && string.IsNullOrEmpty(property.GetColumnType()))
-                    {
-                        property.SetColumnType("nvarchar(255)");
-                    }
-                }
-            }
-
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DBContext).Assembly);
         }
     }
