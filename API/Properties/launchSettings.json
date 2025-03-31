@@ -1,38 +1,35 @@
 {
   "profiles": {
     "Develop": {
-      "commandName": "IISExpress",
+      "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": "Server=<server>;Database=<db>;User Id=<dbuser>;Password=<dbuser>;Encrypt=False",
-        "PRIVATE_KEY": ""
-      },
-      "ConnectionStrings": {
-        "DefaultConnection": "Server=<server>;Database=<db>;User Id=<dbuser>;Password=<dbuser>;Encrypt=False"
+        "CONNECTION_STRING": "Host=<server>;Database=<dbName>;Username=<user>;Password=<password>",
+        "PRIVATE_KEY": "<secretKey>"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7217;http://localhost:5021"
     },
     "Homolog": {
-      "commandName": "IISExpress",
+      "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": "Server=<server>;Database=<db>;User Id=<dbuser>;Password=<dbuser>;Encrypt=False",
-        "PRIVATE_KEY": ""
+        "CONNECTION_STRING": "Host=<server>;Database=<dbName>;Username=<user>;Password=<password>",
+        "PRIVATE_KEY": "<secretKey>"
       }
     },
     "Production": {
-      "commandName": "IISExpress",
+      "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": "Server=<server>;Database=<db>;User Id=<dbuser>;Password=<dbuser>;Encrypt=False",
-        "PRIVATE_KEY": ""
+        "CONNECTION_STRING": "Host=<server>;Database=<dbName>;Username=<user>;Password=<password>",
+        "PRIVATE_KEY": "<secretKey>"
       }
     },
     "Docker": {

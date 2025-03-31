@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace Lupy.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class Pilot : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,13 +16,13 @@ namespace Lupy.Infra.Migrations
                 name: "CLINIC",
                 columns: table => new
                 {
-                    ID_CLINIC = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME = table.Column<string>(type: "nvarchar(25)", unicode: false, maxLength: 25, nullable: false),
-                    CREATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                    CREATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFICATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    MODIFICATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ID_CLINIC = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NAME = table.Column<string>(type: "character varying(25)", unicode: false, maxLength: 25, nullable: false),
+                    CREATION_USER = table.Column<string>(type: "text", nullable: false),
+                    CREATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MODIFICATION_USER = table.Column<string>(type: "text", nullable: true),
+                    MODIFICATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,13 +33,13 @@ namespace Lupy.Infra.Migrations
                 name: "ROLES",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    CREATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                    CREATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFICATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    MODIFICATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NAME = table.Column<string>(type: "text", nullable: true),
+                    CREATION_USER = table.Column<string>(type: "text", nullable: false),
+                    CREATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MODIFICATION_USER = table.Column<string>(type: "text", nullable: true),
+                    MODIFICATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,16 +50,16 @@ namespace Lupy.Infra.Migrations
                 name: "VACCINE",
                 columns: table => new
                 {
-                    ID_VACCINE = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    BATCH = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    EXPIRATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ID_CLINIC = table.Column<int>(type: "int", nullable: false),
-                    CREATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                    CREATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFICATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    MODIFICATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ID_VACCINE = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NAME = table.Column<string>(type: "text", nullable: true),
+                    BATCH = table.Column<string>(type: "text", nullable: true),
+                    EXPIRATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ID_CLINIC = table.Column<int>(type: "integer", nullable: false),
+                    CREATION_USER = table.Column<string>(type: "text", nullable: false),
+                    CREATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MODIFICATION_USER = table.Column<string>(type: "text", nullable: true),
+                    MODIFICATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -75,18 +76,18 @@ namespace Lupy.Infra.Migrations
                 name: "USERS",
                 columns: table => new
                 {
-                    ID_USER = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    EMAIL = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    CELLPHONE = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    PASSWORD = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    ID_ROLE = table.Column<int>(type: "int", nullable: false),
-                    CLINIC_ID = table.Column<int>(type: "int", nullable: false),
-                    CREATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                    CREATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFICATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    MODIFICATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ID_USER = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NAME = table.Column<string>(type: "text", nullable: true),
+                    EMAIL = table.Column<string>(type: "text", nullable: true),
+                    CELLPHONE = table.Column<string>(type: "text", nullable: true),
+                    PASSWORD = table.Column<string>(type: "text", nullable: true),
+                    ID_ROLE = table.Column<int>(type: "integer", nullable: false),
+                    CLINIC_ID = table.Column<int>(type: "integer", nullable: false),
+                    CREATION_USER = table.Column<string>(type: "text", nullable: false),
+                    CREATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MODIFICATION_USER = table.Column<string>(type: "text", nullable: true),
+                    MODIFICATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -109,15 +110,15 @@ namespace Lupy.Infra.Migrations
                 name: "PET",
                 columns: table => new
                 {
-                    ID_PET = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    AGE = table.Column<int>(type: "int", nullable: false),
-                    ID_TUTOR = table.Column<int>(type: "int", nullable: false),
-                    CREATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                    CREATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFICATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    MODIFICATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ID_PET = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    NAME = table.Column<string>(type: "text", nullable: true),
+                    AGE = table.Column<int>(type: "integer", nullable: false),
+                    ID_TUTOR = table.Column<int>(type: "integer", nullable: false),
+                    CREATION_USER = table.Column<string>(type: "text", nullable: false),
+                    CREATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MODIFICATION_USER = table.Column<string>(type: "text", nullable: true),
+                    MODIFICATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -134,15 +135,15 @@ namespace Lupy.Infra.Migrations
                 name: "VACCINE_PET",
                 columns: table => new
                 {
-                    ID_VACCINE_PET = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ID_VACCINE = table.Column<int>(type: "int", nullable: false),
-                    ID_CLINIC = table.Column<int>(type: "int", nullable: false),
-                    ID_PET = table.Column<int>(type: "int", nullable: false),
-                    CREATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: false),
-                    CREATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MODIFICATION_USER = table.Column<string>(type: "nvarchar(255)", nullable: true),
-                    MODIFICATION_DATE = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ID_VACCINE_PET = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ID_VACCINE = table.Column<int>(type: "integer", nullable: false),
+                    ID_CLINIC = table.Column<int>(type: "integer", nullable: false),
+                    ID_PET = table.Column<int>(type: "integer", nullable: false),
+                    CREATION_USER = table.Column<string>(type: "text", nullable: false),
+                    CREATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    MODIFICATION_USER = table.Column<string>(type: "text", nullable: true),
+                    MODIFICATION_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {

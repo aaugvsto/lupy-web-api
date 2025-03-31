@@ -8,7 +8,8 @@ namespace Lupy.Infra.Authentication
         { 
             get 
             { 
-                return Environment.GetEnvironmentVariable("PRIVATE_KEY")!;
+                return "sMHjcjWpbByu";
+                //return Environment.GetEnvironmentVariable("PRIVATE_KEY")!;
             } 
         }
     }

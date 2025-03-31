@@ -9,16 +9,10 @@ namespace Infra.DataAccess
     {
         public DBContext CreateDbContext(string[] args)
         {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false)
-                .AddEnvironmentVariables()
-                .Build();
-
-            var connString = config.GetConnectionString("DefaultConnection");
-
+            var connString = "Host=<server>;Database=<dbName>;Username=<user>;Password=<password>";
+            
             var builder = new DbContextOptionsBuilder<DBContext>()
-                .UseSqlServer(connString, b => b.MigrationsAssembly("Lupy.Infra"));
+                .UseNpgsql(connString, b => b.MigrationsAssembly("Lupy.Infra"));
 
             return new DBContext(builder.Options);
         }
